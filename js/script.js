@@ -8,3 +8,20 @@ const messages = document.querySelector(".message");
 const playAgain = document.querySelector(".play-again");
 const word = 'magnolia';
 
+const wordsInProgress = function(word){
+    const pieces = [];
+    for(const letter of word){
+        // console.log(letter);
+        pieces.push("●");
+    }
+    progress.innerText = pieces.join("");   
+};
+
+btn.addEventListener("click", function(e){
+    e.preventDefault();
+    let guess = letter.value;
+    console.log(guess);
+    letter.value = "";
+});
+
+wordsInProgress(word);
