@@ -115,8 +115,9 @@ const countGuesses = function(guess){
     }
 
     if(remainingGuesses === 0){
-        messages.innerText = 'Sorry, but the game is over. Play again?'
-        progress.innerText = word;
+        messages.innerText = `Sorry, but the game is over. Play again? The word was ${word.toUpperCase()}.`;
+        
+        
         startOver();
     } else if (remainingGuesses === 1) {
         messages.innerText = 'You have one guess left. Use it wisely.'
