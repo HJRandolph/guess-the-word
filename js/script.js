@@ -8,7 +8,7 @@ const messages = document.querySelector(".message");
 const playAgain = document.querySelector(".play-again");
 const guessInput = document.querySelector(".guess-form > label");
 let word = '';
-const guessedLetters = [];
+let guessedLetters = [];
 let remainingGuesses = 0;
 
 const getWord = async function(){
@@ -151,9 +151,9 @@ const startOver = function(){
 playAgain.addEventListener("click", function(){
     messages.classList.remove("win");
     messages.innerText = "";
-    while(guessedLetters > 0){
+    
     guessedLetters = [];
-    }
+ 
     guessed.innerHTML = "";
     getWord();
     btn.classList.remove("hide");
