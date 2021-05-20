@@ -17,7 +17,7 @@ const getWord = async function(){
     const wordArray = words.split("\n");
     const randomIndex = Math.floor(Math.random()* wordArray.length);
     word = wordArray[randomIndex].trim();
-    console.log(word);
+    // console.log(word);
     wordInProgress(word);
     remainingGuesses = word.length;
     appear.innerText = `${remainingGuesses} guesses`;
