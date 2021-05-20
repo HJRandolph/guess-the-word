@@ -7,9 +7,9 @@ const appear = document.querySelector(".remaining > span");
 const messages = document.querySelector(".message");
 const playAgain = document.querySelector(".play-again");
 const guessInput = document.querySelector(".guess-form > label");
-let word = 'magnolia';
-let remainingGuesses = word.length;
+let word = '';
 const guessedLetters = [];
+let remainingGuesses = 0;
 
 const getWord = async function(){
     const res = await fetch("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
@@ -19,6 +19,8 @@ const getWord = async function(){
     word = wordArray[randomIndex].trim();
     console.log(word);
     wordInProgress(word);
+    remainingGuesses = word.length;
+    appear.innerText = `${remainingGuesses} guesses`;
 };
 
 const wordInProgress = function(word){
@@ -114,16 +116,13 @@ const countGuesses = function(guess){
 
     if(remainingGuesses === 0){
         messages.innerText = 'Sorry, but the game is over. Play again?'
-        btn.classList.add("hide");
-        letter.classList.add("hide");
-        guessInput.classList.add("hide");
-        playAgain.classList.remove("hide");
-        appear.innerText = `${remainingGuesses}`;
-    } else if (remainingGuesses ===1) {
+        progress.innerText = word;
+        startOver();
+    } else if (remainingGuesses === 1) {
         messages.innerText = 'You have one guess left. Use it wisely.'
-        appear.innerText = `${remainingGuesses}`;
+        appear.innerText = `${remainingGuesses} guesses`;
     } else {
-        appear.innerText = `${remainingGuesses}`;
+        appear.innerText = `${remainingGuesses} guesses`;
     }
     
 };
@@ -133,7 +132,34 @@ const playerWon = function(){
         messages.classList.add("win");
         messages.innerHTML = `<p class="highlight">You correctly guessed the word! Congratulations!</p>`;
         // console.log("you've won!");
+        startOver();
     } 
 };
 
 updatePage(guessedLetters);
+
+const startOver = function(){
+    btn.classList.add("hide");
+    letter.classList.add("hide");
+    guessInput.classList.add("hide");
+    remaining.classList.add("hide");
+    guessed.classList.add("hide");
+    playAgain.classList.remove("hide");
+    
+};
+
+playAgain.addEventListener("click", function(){
+    messages.classList.remove("win");
+    messages.innerText = "";
+    while(guessedLetters > 0){
+    guessedLetters = [];
+    }
+    guessed.innerHTML = "";
+    getWord();
+    btn.classList.remove("hide");
+    letter.classList.remove("hide");
+    guessInput.classList.remove("hide");
+    remaining.classList.remove("hide");
+    guessed.classList.remove("hide");
+    playAgain.classList.add("hide");
+});
