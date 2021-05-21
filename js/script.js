@@ -2,6 +2,7 @@ const guessed = document.querySelector(".guessed-letters");
 const btn = document.querySelector(".guess");
 const letter = document.querySelector(".letter");
 const progress = document.querySelector(".word-in-progress");
+const reveal = document.querySelector(".reveal");
 const remaining = document.querySelector(".remaining");
 const appear = document.querySelector(".remaining > span");
 const messages = document.querySelector(".message");
@@ -115,9 +116,10 @@ const countGuesses = function(guess){
     }
 
     if(remainingGuesses === 0){
-        messages.innerText = `Sorry, but the game is over. Play again? The word was ${word.toUpperCase()}.`;
-        
-        
+        messages.innerText = `Sorry, but the game is over. Play again?`;
+        progress.classList.add("hide");
+        reveal.innerText = `The word was ${word.toUpperCase()}.`;
+        reveal.classList.remove("hide");
         startOver();
     } else if (remainingGuesses === 1) {
         messages.innerText = 'You have one guess left. Use it wisely.'
