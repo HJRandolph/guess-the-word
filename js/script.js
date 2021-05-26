@@ -154,7 +154,7 @@ const startOver = function(){
 playAgain.addEventListener("click", function(){
     messages.classList.remove("win");
     messages.innerText = "";
-    
+    reveal.innerText = "";
     guessedLetters = [];
  
     guessed.innerHTML = "";
