@@ -43,7 +43,7 @@ btn.addEventListener("click", function(e){
     letter.value = "";
 });
 
-console.log(guessedLetters);
+// console.log(guessedLetters);
 
 const acceptGuess = function(input){
     const acceptedLetter = /[a-zA-Z]/;
@@ -117,7 +117,6 @@ const countGuesses = function(guess){
 
     if(remainingGuesses === 0){
         messages.innerText = `Sorry, but the game is over. Play again?`;
-        progress.classList.add("hide");
         reveal.innerText = `The word was ${word.toUpperCase()}.`;
         reveal.classList.remove("hide");
         startOver();
@@ -143,7 +142,7 @@ updatePage(guessedLetters);
 
 const startOver = function(){
     btn.classList.add("hide");
-    letter.classList.add("hide");
+    // letter.classList.add("hide");
     guessInput.classList.add("hide");
     remaining.classList.add("hide");
     guessed.classList.add("hide");
@@ -164,5 +163,6 @@ playAgain.addEventListener("click", function(){
     guessInput.classList.remove("hide");
     remaining.classList.remove("hide");
     guessed.classList.remove("hide");
+    progress.innerText = "";
     playAgain.classList.add("hide");
 });
