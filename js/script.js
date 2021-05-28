@@ -119,6 +119,7 @@ const countGuesses = function(guess){
         messages.innerText = `Sorry, but the game is over. Play again?`;
         reveal.innerText = `The word was ${word.toUpperCase()}.`;
         reveal.classList.remove("hide");
+        letter.classList.add("hide");
         startOver();
     } else if (remainingGuesses === 1) {
         messages.innerText = 'You have one guess left. Use it wisely.'
