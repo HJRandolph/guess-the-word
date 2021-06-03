@@ -135,6 +135,7 @@ const playerWon = function(){
         messages.classList.add("win");
         messages.innerHTML = `<p class="highlight">You correctly guessed the word! Congratulations!</p>`;
         // console.log("you've won!");
+        letter.classList.add("hide");
         startOver();
     } 
 };
